@@ -16,6 +16,7 @@ var connectToDb = require('./connection')
   , login = require('./routes/login')
   , signup = require('./routes/signup')
   , logout = require('./routes/logout')
+  , new_poll = require('./routes/new_poll')
   , User = require('./models/user');
 
 /******************************************************************************/
@@ -73,6 +74,8 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/logout', logout);
+app.use('/new_poll', new_poll);
+
 
 /******************************************************************************/
 
