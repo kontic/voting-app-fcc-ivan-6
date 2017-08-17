@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <% include partials/head %>
+
+  </head>
+  <body>
+    
+    <% include partials/header %>
+    
+    <div class="container">
+      <div class="create_vote_container">
+          
+        <form id="vote_poll_form" class="w3-container w3-text-blue" action="/vote_poll" method="post">
+          
+          <input type="hidden" value="<%= link_code %>" name="link_code" />
+          
+          <h2>Poll: <%= poll_name %> [created by: <%= poll_owner %>]</h2>
+          <p id="option_items"> 
+            <% for( var i = 0; i < options.length; i++ ) {%>
+              
+              <input class="w3-radio" type="radio" name="radio_poll" value="<%= options[i]._id %>" <% if(i == 0) { %>checked<% } %>>
+              <label><%= options[i].option_name %></label><br><br>
+            <% } %>
+          </p>
+        </form>
+        <div class="w3-container new_poll_btns">
+          <% if(isAuthenticated) { %>
+            <p>      
+            <button id="add_opt_btn" class="w3-btn w3-white w3-border w3-border-blue">Add Options</button></p>
+          <% } %>
+          <p>      
+          <button type="submit" form="vote_poll_form" class="w3-btn w3-blue">Vote</button></p>
+        </div>
+
+      </div>
+    </div>
+    
+    <% include partials/footer %>
+    
+    <script>
+      $( "#add_opt_btn" ).on( "click", function() {
+        var next_item = $("#option_items input[type=text]").length + 1;
+        $( "#option_items" ).append( '<input class="w3-input w3-border" name="options_' + next_item + '" type="text" required>' );
+        $( this ).remove();
+        $( "input:checked" ).prop('checked', false); 
+        $( "input[name=options_1]" ).focus();
+      });
+    </script>
+    
+  </body>
+</html>
+
+
+
+
+

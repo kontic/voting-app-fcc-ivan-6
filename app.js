@@ -17,6 +17,9 @@ var connectToDb = require('./connection')
   , signup = require('./routes/signup')
   , logout = require('./routes/logout')
   , new_poll = require('./routes/new_poll')
+  , show_link_to_poll = require('./routes/show_link_to_poll')
+  , polls = require('./routes/polls')
+  , vote_poll = require('./routes/vote_poll')
   , User = require('./models/user');
 
 /******************************************************************************/
@@ -75,6 +78,9 @@ app.use('/login', login);
 app.use('/signup', signup);
 app.use('/logout', logout);
 app.use('/new_poll', new_poll);
+app.use('/show_link_to_poll', show_link_to_poll);
+app.use('/polls/*', polls);
+app.use('/vote_poll', vote_poll);
 
 
 /******************************************************************************/
