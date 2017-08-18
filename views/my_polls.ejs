@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <% include partials/head %>
+
+  </head>
+  <body>
+    
+    <% include partials/header %>
+    
+    <div class="container">
+      <div class="create_vote_container">
+        
+        <h2 class="w3-text-blue">My Polls</h2>
+        
+        <ul class="w3-ul l w3-hoverable">
+          <% for( var i = 0; i < polls.length; i++ ) {%>
+            <a href="polls/<%= user.name %>/<%= polls[i].link_code %>">
+            <li class="w3-display-container w3-hover-green w3-blue list-poll-item">
+              <%= polls[i].poll_name %>
+              <form method="post" action="/my_polls">
+                <input type="hidden" value="<%= polls[i].link_code %>" name="for_delete" />
+                <span value="" class="w3-button w3-transparent w3-display-right w3-hover-orange w3-red">Delete</span>
+              </form>
+            </li>
+            </a>
+          <% } %>
+        </ul>
+        
+      </div>
+    </div>
+    
+    <% include partials/footer %>
+    
+    <script>
+    
+      $( "span" ).on( "click", function( event ) {
+        event.preventDefault();
+        $(this).parents('form:first').submit();
+      });
+      
+    </script>
+    
+  </body>
+</html>

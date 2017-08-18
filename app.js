@@ -20,8 +20,12 @@ var connectToDb = require('./connection')
   , show_link_to_poll = require('./routes/show_link_to_poll')
   , polls = require('./routes/polls')
   , vote_poll = require('./routes/vote_poll')
+  , my_polls = require('./routes/my_polls')
+  , results = require('./routes/results')
   , User = require('./models/user');
-
+  
+  
+  
 /******************************************************************************/
 
 // view engine setup
@@ -81,7 +85,8 @@ app.use('/new_poll', new_poll);
 app.use('/show_link_to_poll', show_link_to_poll);
 app.use('/polls/*', polls);
 app.use('/vote_poll', vote_poll);
-
+app.use('/my_polls', my_polls);
+app.use('/results/*', results);
 
 /******************************************************************************/
 

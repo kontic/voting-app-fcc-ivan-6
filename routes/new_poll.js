@@ -3,7 +3,7 @@ var express = require('express')
   , random_string = require('./random_string')
   , router = express.Router();
 
-/* new poll */
+/* render new poll page */
 router.get('/', function(req, res, next) {
   if(req.isAuthenticated()){
     res.render('new_poll', { 
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   
 });
 
-//responds to validation from singup frontend page (if user exists => 'ok' else =>'not ok')
+// post new poll
 router.post('/', function(req, res){
   var options_temp = [];
   var index = 1;
@@ -36,16 +36,6 @@ router.post('/', function(req, res){
     if (err) return console.error(err);
     // saved!
   });
-  
-  //-------proba-----------
-  
-  poll.options.push({option_name: 'Heloooooooooo', option_value: 1});
-  poll.save(function (err) {
-    if (err) return console.error(err);
-    // saved!
-  });
-  
-  //-----------------------
   
   res.redirect('/show_link_to_poll/?new_url=polls/' + req.user.name + '/' + random_part);
 });

@@ -3,7 +3,9 @@
   right: 0;
 }
 
-
+rect {
+  fill: transparent !important;
+}
 
 
 
@@ -16,7 +18,9 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  /*color: #00B7FF;*/
+  text-decoration: none;
+  color: inherit;
 }
 
 .container {
@@ -41,10 +45,20 @@ a {
   padding: 15px 24px 15px 0px;
 }
 
-input {
+input, .list-poll-item {
   margin: 1px 0px;
 }
 
-.new_poll_btns button{
+.list-poll-item {
+  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow: ellipsis;
+}
+
+.new_poll_btns button {
   width: 150px;
+}
+
+#piechart {
+  margin: 0 auto;
 }

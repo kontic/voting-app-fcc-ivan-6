@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router();
 
-//render login page
+//showing link toward poll
 router.get('/', function(req, res, next) {
   res.render('show_link_to_poll', { 
     isAuthenticated: req.isAuthenticated(),

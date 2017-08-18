@@ -30,8 +30,9 @@
             <p>      
             <button id="add_opt_btn" class="w3-btn w3-white w3-border w3-border-blue">Add Options</button></p>
           <% } %>
-          <p>      
-          <button type="submit" form="vote_poll_form" class="w3-btn w3-blue">Vote</button></p>
+            <a href="/results/<%= poll_owner %>/<%= link_code %>">
+            <p><button class="w3-btn w3-white w3-border w3-border-blue">Show Results</button></p></a>
+            <p><button type="submit" form="vote_poll_form" class="w3-btn w3-blue">Vote</button></p>
         </div>
 
       </div>

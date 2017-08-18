@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-//responds to validation from singup frontend page (if user exists => 'ok' else =>'not ok')
+//responds to validation from singup frontend page (if user not exist => 'ok' else =>'not ok')
 router.post('/', function(req, res){
   User.findOne({name: req.body.username}, function(err, user_db){
     if (err) throw err;

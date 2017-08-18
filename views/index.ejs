@@ -10,8 +10,19 @@
     <% include partials/header %>
       
     <div class="container">
-      <h1>Express</h1>
-      <p>Welcome to Express</p>
+      <div class="create_vote_container">
+        
+        <h2 class="w3-text-blue">All Polls</h2>
+        
+        <ul class="w3-ul l w3-hoverable">
+          <% for( var i = 0; i < polls.length; i++ ) {%>
+            <a href="polls/<%= polls[i].user_name %>/<%= polls[i].link_code %>">
+            <li class="w3-display-container w3-hover-green w3-blue list-poll-item"><%= polls[i].poll_name %></li>
+            </a>
+          <% } %>
+        </ul>
+        
+      </div>
     </div>
     
     <% include partials/footer %>

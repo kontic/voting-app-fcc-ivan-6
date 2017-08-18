@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <% include partials/head %>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      var data_for_present = [];
+      data_for_present.push(['Task', 'Poll Results']);
+      var options_temp = <%- JSON.stringify(options) %>;
+      
+      for( var i = 0; i < options_temp.length; i++ ) {
+        data_for_present.push([options_temp[i].option_name, options_temp[i].option_value]);
+      }
+      
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(data_for_present);
+
+        var options = {
+          title: 'Results for [' + '<%= poll_name %>' + '] poll',
+          titleTextStyle: { 
+            color: '#2196F3',
+            fontName: 'Arial',
+            fontSize: 22,
+            bold: true,
+            italic: false }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+  </head>
+  <body>
+    
+    <% include partials/header %>
+    
+    <div class="container">
+
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+    </div>
+    
+    <% include partials/footer %>
+
+  </body>
+</html>
+
+
+
+
+
